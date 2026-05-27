@@ -1,5 +1,4 @@
 'use client';
-import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, LayoutGrid, Bell, ChevronDown } from 'lucide-react';
 
@@ -10,7 +9,6 @@ interface TopbarProps {
 }
 
 export default function Topbar({ title, backHref, breadcrumb = 'Assignment' }: TopbarProps) {
-  const [avatarError, setAvatarError] = useState(false);
 
   return (
     <div className="topbar">

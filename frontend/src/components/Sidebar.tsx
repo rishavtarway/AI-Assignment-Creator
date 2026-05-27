@@ -1,5 +1,4 @@
 'use client';
-import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAssignmentStore } from '@/store/assignmentStore';
@@ -17,7 +16,6 @@ export default function Sidebar() {
   const pathname = usePathname();
   const { assignments } = useAssignmentStore();
   const count = assignments.length;
-  const [avatarError, setAvatarError] = useState(false);
 
   return (
     <aside className="sidebar">
