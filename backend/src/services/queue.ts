@@ -1,9 +1,7 @@
 import { Queue } from 'bullmq';
-import IORedis from 'ioredis';
+import { createRedisClient } from './redisClient';
 
-export const redis = new IORedis(process.env.REDIS_URL!, {
-  maxRetriesPerRequest: null,
-});
+export const redis = createRedisClient();
 
 redis.on('error', (err) => {
   console.error('[Redis] Error:', err);

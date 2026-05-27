@@ -1,16 +1,14 @@
 import { Worker, Job } from 'bullmq';
-import IORedis from 'ioredis';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import path from 'path';
+import { createRedisClient } from '../services/redisClient';
 
 dotenv.config({ path: path.join(__dirname, '../../.env') });
 
 const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/vedaai';
 
-const connection = new IORedis(process.env.REDIS_URL!, {
-  maxRetriesPerRequest: null,
-});
+const connection = createRedisClient();
 
 connection.on('error', (err) => {
   console.error('[Worker Redis] Error:', err);

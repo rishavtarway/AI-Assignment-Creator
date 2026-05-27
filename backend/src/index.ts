@@ -5,13 +5,13 @@ import dotenv from 'dotenv';
 import http from 'http';
 import path from 'path';
 import { Worker, Job } from 'bullmq';
-import IORedis from 'ioredis';
 
 dotenv.config();
 
 import assignmentRoutes from './routes/assignments';
 import { wsManager } from './services/wsManager';
 import { redis } from './services/queue';
+import { createRedisClient } from './services/redisClient';
 import { errorHandler, notFound } from './middleware/errorHandler';
 
 const app = express();
@@ -35,9 +35,7 @@ app.use(errorHandler);
 wsManager.init(server);
 
 // Inline Worker (for simplicity in single-server mode)
-const workerConnection = new IORedis(process.env.REDIS_URL!, {
-  maxRetriesPerRequest: null,
-});
+const workerConnection = createRedisClient();
 
 workerConnection.on('error', (err) => {
   console.error('[Worker Redis] Error:', err);
