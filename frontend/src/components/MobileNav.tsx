@@ -13,12 +13,12 @@ export function MobileHeader({ title = 'Assignments', backHref }: { title?: stri
             </svg>
           </Link>
         ) : (
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <rect width="24" height="24" rx="4" fill="#E84A2F" />
-              <path d="M5 18L12 6l7 12H5z" fill="white" />
-            </svg>
-            <span style={{ fontWeight: 700, fontSize: 16 }}>VedaAI</span>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <img 
+              src="/Frame 1618872393.png" 
+              alt="VedaAI Logo" 
+              style={{ height: 24, width: 'auto', objectFit: 'contain', flexShrink: 0 }} 
+            />
           </div>
         )}
         {backHref && <span style={{ fontWeight: 600, fontSize: 16 }}>{title}</span>}
