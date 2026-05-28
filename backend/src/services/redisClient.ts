@@ -1,7 +1,13 @@
 import IORedis, { RedisOptions } from 'ioredis';
 
 export function createRedisClient(extraOptions: Partial<RedisOptions> = {}): IORedis {
-  const url = process.env.REDIS_URL;
+  let url = process.env.REDIS_URL;
+
+  // Programmatic local override to prevent private Render Redis DNS errors on local machines
+  if (!process.env.RENDER && url && (url.includes('red-d8c4q37avr4c73efh3dg') || url.includes('render.com') && !url.includes('external'))) {
+    console.warn('[Redis] ⚠️ Private Render Redis URL detected locally. Overriding to local fallback (redis://127.0.0.1:6379).');
+    url = 'redis://127.0.0.1:6379';
+  }
 
   if (!url) {
     console.error('❌ REDIS_URL is not set! Check your Render environment variables.');
