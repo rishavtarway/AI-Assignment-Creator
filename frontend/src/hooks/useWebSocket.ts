@@ -3,8 +3,8 @@ import { useEffect, useRef } from 'react';
 import { useAssignmentStore } from '@/store/assignmentStore';
 import axios from 'axios';
 
-const WS_URL = process.env.NEXT_PUBLIC_WS_URL || 'ws://localhost:5000/ws';
-const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+const WS_URL = process.env.NEXT_PUBLIC_WS_URL || 'ws://localhost:5001/ws';
+const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
 
 export function useWebSocket(assignmentId?: string) {
   const wsRef = useRef<WebSocket | null>(null);

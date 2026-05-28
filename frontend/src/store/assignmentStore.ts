@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { Assignment, CreateAssignmentForm, QuestionType } from '@/types';
 import axios from 'axios';
 
-const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
 
 interface AssignmentStore {
   assignments: Assignment[];
